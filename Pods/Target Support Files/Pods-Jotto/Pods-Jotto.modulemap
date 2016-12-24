@@ -1,0 +1,6 @@
+framework module Pods_Jotto {
+  umbrella header "Pods-Jotto-umbrella.h"
+
+  export *
+  module * { export * }
+}
