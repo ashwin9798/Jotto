@@ -9,8 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class UserListViewController: UIViewController {
-    
+class PrivateGameUsers: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -23,7 +22,9 @@ class UserListViewController: UIViewController {
     var whichButtonEmpty: Int = 0
     var buttonIsEmpty: Bool = false
     
+    
     var ref: FIRDatabaseReference = FIRDatabase.database().reference()
+    var myRef: FIRDatabaseReference = FIRDatabase.database().reference().child(keys).child("selected")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,52 @@ class UserListViewController: UIViewController {
             self.whichButtonEmpty = 0
             self.buttonIsEmpty = false
 
+        })
+        
+        self.ref.observe(.childRemoved, with: { (snapshot) in
+            
+            let user = userObject(snapshot: snapshot)
+            
+            if user.key != keys
+            {
+                
+                for index in 0...self.ArrayOfKeys.count-1{
+                    if(user.key == self.ArrayOfKeys[index]){
+                        
+                        let buttonToDelete = self.ArrayOfButtons[index-1]
+                        buttonToDelete.removeFromSuperview()
+                        self.ArrayOfKeys[index] = "0"
+                    }
+                }
+                
+            }
+            
+        })
+        
+        myRef.observe(FIRDataEventType.value, with: { (snapshot) in
+            if !snapshot.exists()
+            {
+                print("Data snapshot doesn't exist...")
+                return
+            }
+                
+            else
+            {
+                let decision = snapshot.value as! Bool
+                if (decision)
+                {
+                    print("Match Complete")
+                    
+                    self.performSegue(withIdentifier: "toMatch", sender: Any?.self)
+                    self.ref.child(keys).removeValue()
+                    
+                }
+                else
+                {
+                    print("No Matches... Yet")
+                }
+                
+            }
             
         })
 
@@ -88,7 +135,6 @@ class UserListViewController: UIViewController {
         button.addTarget(self, action: #selector(buttonAction), for: UIControlEvents.touchUpInside)
         button.setTitle(username, for: UIControlState.normal)
         button.setTitleColor(UIColor.purple, for: UIControlState.normal)
-        button.alpha = 0
         
         if(self.buttonIsEmpty == true){
             button.tag = self.whichButtonEmpty
@@ -110,10 +156,11 @@ class UserListViewController: UIViewController {
                 let key = ArrayOfKeys[index]
                 
                 ref.child(key).child("selected").setValue(true)
+                ref.child(key).child("wordToGuess").setValue(myWord)
                 
                 ref.child(keys).removeValue()
                 
-                performSegue(withIdentifier: "toMatch", sender: Any?.self)
+                performSegue(withIdentifier: "toGame", sender: Any?.self)
             }
         }
         whichButtonDeleted = buttonTag.tag

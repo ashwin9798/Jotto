@@ -15,17 +15,20 @@ class userObject: NSObject {
     let name: String
     let word: String
     let selected: Bool
+    let wordToGuess: String
     
     let kword = "word"
     let kname = "name"
     let kselected = "selected"
+    let kguess = "wordToGuess"
     
-    init (key: String, name: String, word: String, selected: Bool)
+    init (key: String, name: String, word: String, selected: Bool, wordToGuess: String)
     {
         self.key = key
         self.name = name
         self.word = word
         self.selected = selected
+        self.wordToGuess = wordToGuess
     }
     
     init(snapshot: FIRDataSnapshot)
@@ -34,9 +37,20 @@ class userObject: NSObject {
         self.name = (snapshot.value as! NSDictionary)[self.kname] as! String
         self.word = (snapshot.value as! NSDictionary)[self.kword] as! String
         self.selected = (snapshot.value as! NSDictionary)[self.kselected] as! Bool
+        self.wordToGuess = (snapshot.value as! NSDictionary)[self.kguess] as! String
     }
     
     func getSnapshotValue() -> NSDictionary {
-        return ["name": name, "word": word, "selected": selected]
+        return ["name": name, "word": word, "selected": selected, "wordToGuess": wordToGuess]
     }
+    
+    func hasBeenChosen() -> Bool {
+        
+        if (self.wordToGuess != ""){
+            return true
+        }
+        return false
+        
+    }
+    
 }

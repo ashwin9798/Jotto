@@ -26,20 +26,20 @@
                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hv3-s3-VQ6">
-                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="34"/>
-                                <size key="titleShadowOffset" width="50" height="7"/>
-                                <state key="normal" title="Multiplayer" backgroundImage="Rectangle 4">
-                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="multiplayerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g1C-Fa-aDx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTI-2r-IhZ">
-                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTI-2r-IhZ">
+                                <frame key="frameInset" minX="16" minY="591" width="343" height="68"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="33"/>
                                 <size key="titleShadowOffset" width="50" height="7"/>
                                 <state key="normal" title="Play vs. CPU" backgroundImage="Rectangle 4">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40Q-Ke-Yog">
+                                <frame key="frameInset" minX="16" minY="500" width="343" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="26"/>
+                                <size key="titleShadowOffset" width="50" height="7"/>
+                                <state key="normal" title="Create Private Game" backgroundImage="Rectangle 4">
                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
@@ -134,6 +134,17 @@
                                     <action selector="letter5button:" destination="BYZ-38-t0r" eventType="editingChanged" id="nF8-Mg-Yy0"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hv3-s3-VQ6">
+                                <frame key="frameInset" minX="15" minY="415" width="343" height="67"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="34"/>
+                                <size key="titleShadowOffset" width="50" height="7"/>
+                                <state key="normal" title="Play Online" backgroundImage="Rectangle 4">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="playOnlineButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nt2-RD-Dg3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -160,7 +171,7 @@
                             <constraint firstItem="Wpm-tR-uHM" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="-3" id="duh-vM-2kx"/>
                             <constraint firstItem="bzl-1F-uNI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e8S-yn-gv7"/>
                             <constraint firstItem="wdI-bA-eeq" firstAttribute="baseline" secondItem="5eh-zk-Z1z" secondAttribute="baseline" constant="-1" id="ejQ-ey-gDn"/>
-                            <constraint firstItem="QTI-2r-IhZ" firstAttribute="top" secondItem="hv3-s3-VQ6" secondAttribute="bottom" constant="18" id="evc-39-slr"/>
+                            <constraint firstItem="QTI-2r-IhZ" firstAttribute="top" secondItem="hv3-s3-VQ6" secondAttribute="bottom" constant="102" id="evc-39-slr"/>
                             <constraint firstItem="wdI-bA-eeq" firstAttribute="baseline" secondItem="WqV-AL-gnf" secondAttribute="baseline" id="hGq-73-jhZ"/>
                             <constraint firstItem="wdI-bA-eeq" firstAttribute="leading" secondItem="WqV-AL-gnf" secondAttribute="trailing" constant="8" symbolic="YES" id="hZO-7U-W7C"/>
                             <constraint firstItem="WqV-AL-gnf" firstAttribute="leading" secondItem="5eh-zk-Z1z" secondAttribute="trailing" constant="9" id="mBl-qr-8VJ"/>
@@ -177,21 +188,22 @@
                         <outlet property="letter3" destination="wdI-bA-eeq" id="yyT-h3-6Xf"/>
                         <outlet property="letter4" destination="MIv-UE-l6t" id="iQp-8k-f21"/>
                         <outlet property="letter5" destination="EST-n7-qCN" id="ykV-VN-UjH"/>
-                        <outlet property="multiplayerButton" destination="hv3-s3-VQ6" id="iDw-lG-AmW"/>
                         <outlet property="nameTextField" destination="9Gi-Y4-Tq4" id="Dpi-y1-RO1"/>
+                        <outlet property="playOnlineButton" destination="hv3-s3-VQ6" id="Cq0-pr-r2O"/>
                         <outlet property="playVsCPUButton" destination="QTI-2r-IhZ" id="h33-iD-zsl"/>
                         <outlet property="yourWord" destination="Qh0-HP-WV8" id="eIn-8H-gdS"/>
-                        <segue destination="BYp-aR-G2S" kind="show" identifier="firstSegue" id="OoO-Ae-hBo"/>
+                        <segue destination="J5z-vv-eTI" kind="show" identifier="toRandomGame" id="66B-mw-KdE"/>
+                        <segue destination="BYp-aR-G2S" kind="show" identifier="privateGameSegue" id="0DY-SO-e5S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
         </scene>
-        <!--User List View Controller-->
+        <!--Private Game Users-->
         <scene sceneID="LvB-qK-ZhV">
             <objects>
-                <viewController id="BYp-aR-G2S" customClass="UserListViewController" customModule="Jotto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYp-aR-G2S" customClass="PrivateGameUsers" customModule="Jotto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u5l-XA-0BD"/>
                         <viewControllerLayoutGuide type="bottom" id="nAb-Wq-fs9"/>
@@ -200,7 +212,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQ4-xG-uqk"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQ4-xG-uqk">
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -212,11 +226,273 @@
                     </view>
                     <connections>
                         <outlet property="scrollView" destination="qQ4-xG-uqk" id="xQK-5M-6iS"/>
+                        <segue destination="glT-hw-dFm" kind="show" id="03x-NE-oDz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qlt-Mc-Fvo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="853.60000000000002" y="36.431784107946029"/>
+            <point key="canvasLocation" x="684" y="761"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Go6-x7-pMJ">
+            <objects>
+                <viewController id="glT-hw-dFm" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ubA-4V-f6W"/>
+                        <viewControllerLayoutGuide type="bottom" id="lac-CU-gSB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hgg-Sz-yK5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4av-Uz-d4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1545" y="761"/>
+        </scene>
+        <!--Online Game View Controller-->
+        <scene sceneID="r9k-wn-uU5">
+            <objects>
+                <viewController id="J5z-vv-eTI" customClass="OnlineGameViewController" customModule="Jotto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uPU-q4-vdA"/>
+                        <viewControllerLayoutGuide type="bottom" id="wzl-hp-WAs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="35e-VZ-dt2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="hBZ-q8-IdN"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Looking for Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ec-II-9rz">
+                                <frame key="frameInset" minX="106" minY="363" width="183" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="vUd-xP-49e">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="33t-xa-OLe"/>
+                                    <constraint firstAttribute="height" constant="40" id="pYU-UG-oq8"/>
+                                </constraints>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="letter3button:" destination="BYZ-38-t0r" eventType="editingChanged" id="L8F-mh-Yv0"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="zKx-jV-FkA">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="PC0-2D-uHr"/>
+                                    <constraint firstAttribute="height" constant="40" id="sGP-pe-6AB"/>
+                                </constraints>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="letter4button:" destination="BYZ-38-t0r" eventType="editingChanged" id="cru-N3-rsH"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="13T-rd-uRs">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="Vfn-XK-0yK"/>
+                                    <constraint firstAttribute="height" constant="40" id="w35-v9-aAV"/>
+                                </constraints>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="letter2button:" destination="BYZ-38-t0r" eventType="editingChanged" id="Dv3-Z4-Zcu"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="zn7-pj-Qs5">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="2en-9m-6Fi"/>
+                                    <constraint firstAttribute="height" constant="40" id="wtg-c8-bU2"/>
+                                </constraints>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="26"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="letter1button:" destination="BYZ-38-t0r" eventType="editingChanged" id="jM6-nO-bhG"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="lK4-dU-8mw">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="506-NK-bkt"/>
+                                    <constraint firstAttribute="height" constant="40" id="OA7-Th-Xvp"/>
+                                </constraints>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="letter5button:" destination="BYZ-38-t0r" eventType="editingChanged" id="1ng-Fi-pN1"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Guess: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itc-8w-gaa">
+                                <frame key="frameInset" minX="16" minY="35" width="131" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdm-3R-7aG">
+                                <frame key="frameInset" minX="94" minY="410" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="X"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYF-M8-gxa">
+                                <frame key="frameInset" minX="94" minY="174" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="A"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dwz-WD-fEC">
+                                <frame key="frameInset" minX="161" minY="174" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="B"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjl-1h-M02">
+                                <frame key="frameInset" minX="31" minY="223" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="D"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ane-wx-rFv">
+                                <frame key="frameInset" minX="163" minY="410" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Y"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNX-wr-EGh">
+                                <frame key="frameInset" minX="231" minY="223" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="G"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZ8-Pk-Gvq">
+                                <frame key="frameInset" minX="94" minY="223" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="E"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcS-LY-8UP">
+                                <frame key="frameInset" minX="161" minY="223" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="F"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnV-ja-X05">
+                                <frame key="frameInset" minX="31" minY="271" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="I"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4G-sW-hl7">
+                                <frame key="frameInset" minX="301" minY="223" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="H"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBm-1J-EqI">
+                                <frame key="frameInset" minX="161" minY="271" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="K"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2PR-2r-Yfo">
+                                <frame key="frameInset" minX="94" minY="271" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="J"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czb-13-mxA">
+                                <frame key="frameInset" minX="301" minY="271" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="M"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9LC-ny-23s">
+                                <frame key="frameInset" minX="231" minY="271" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="L"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9h-U3-9Ea">
+                                <frame key="frameInset" minX="94" minY="319" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="O"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nm-J1-1T1">
+                                <frame key="frameInset" minX="31" minY="319" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="N"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IlQ-cB-O9V">
+                                <frame key="frameInset" minX="231" minY="319" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Q"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tc6-hO-hDd">
+                                <frame key="frameInset" minX="301" minY="358" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="W"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWZ-DT-nII">
+                                <frame key="frameInset" minX="163" minY="319" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="P"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ff-Fv-GRJ">
+                                <frame key="frameInset" minX="31" minY="363" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="S"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sj6-au-rpH">
+                                <frame key="frameInset" minX="301" minY="319" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="R"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWZ-kE-lcT">
+                                <frame key="frameInset" minX="163" minY="361" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="U"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weG-2n-odA">
+                                <frame key="frameInset" minX="94" minY="363" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="T"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Bd-bU-4t7">
+                                <frame key="frameInset" minX="231" minY="361" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="V"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKL-b5-cUi">
+                                <frame key="frameInset" minX="231" minY="410" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Z"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoT-ou-aWV">
+                                <frame key="frameInset" minX="231" minY="174" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="C"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="vUd-xP-49e" firstAttribute="centerX" secondItem="hBZ-q8-IdN" secondAttribute="centerX" constant="-2.5" id="8EL-gF-ae7"/>
+                            <constraint firstItem="13T-rd-uRs" firstAttribute="leading" secondItem="zn7-pj-Qs5" secondAttribute="trailing" constant="9" id="9Kt-FR-rNN"/>
+                            <constraint firstItem="zKx-jV-FkA" firstAttribute="leading" secondItem="vUd-xP-49e" secondAttribute="trailing" constant="8" symbolic="YES" id="9lZ-jx-bfH"/>
+                            <constraint firstItem="vUd-xP-49e" firstAttribute="baseline" secondItem="zn7-pj-Qs5" secondAttribute="baseline" constant="-1" id="BXs-PE-Zdh"/>
+                            <constraint firstItem="hBZ-q8-IdN" firstAttribute="centerX" secondItem="35e-VZ-dt2" secondAttribute="centerX" id="Que-ZZ-RCC"/>
+                            <constraint firstItem="vUd-xP-49e" firstAttribute="baseline" secondItem="lK4-dU-8mw" secondAttribute="baseline" id="VPk-Mi-hwy"/>
+                            <constraint firstItem="hBZ-q8-IdN" firstAttribute="centerY" secondItem="35e-VZ-dt2" secondAttribute="centerY" id="bVg-pH-j0B"/>
+                            <constraint firstItem="vUd-xP-49e" firstAttribute="baseline" secondItem="13T-rd-uRs" secondAttribute="baseline" id="blr-FQ-obm"/>
+                            <constraint firstItem="lK4-dU-8mw" firstAttribute="leading" secondItem="zKx-jV-FkA" secondAttribute="trailing" constant="8" symbolic="YES" id="kdj-hM-v2c"/>
+                            <constraint firstItem="vUd-xP-49e" firstAttribute="baseline" secondItem="zKx-jV-FkA" secondAttribute="baseline" id="q24-kl-LR1"/>
+                            <constraint firstItem="zn7-pj-Qs5" firstAttribute="top" secondItem="uPU-q4-vdA" secondAttribute="bottom" constant="57" id="tb6-l7-yKS"/>
+                            <constraint firstItem="vUd-xP-49e" firstAttribute="leading" secondItem="13T-rd-uRs" secondAttribute="trailing" constant="8" symbolic="YES" id="y6g-Io-zHh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loadingLabel" destination="9ec-II-9rz" id="vii-u2-E6m"/>
+                        <outlet property="loadingPlayers" destination="hBZ-q8-IdN" id="ALU-6L-ifL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="weC-Sz-lDL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1616.8" y="54.422788605697157"/>
         </scene>
     </scenes>
     <resources>

@@ -10,13 +10,17 @@ import UIKit
 import FirebaseDatabase
 
 var keys = ""
+var myWord = ""
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
     var ref: FIRDatabaseReference!
+    var playingOnlineRef: FIRDatabaseReference!
+    var privateGameRef: FIRDatabaseReference!
     
     @IBOutlet weak var howToPlayButton: UIButton!
-    @IBOutlet weak var multiplayerButton: UIButton!
+    
+    @IBOutlet weak var playOnlineButton: UIButton!
     @IBOutlet weak var playVsCPUButton: UIButton!
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -76,6 +80,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view, typically from a nib.
     
         ref = FIRDatabase.database().reference()
+        playingOnlineRef = FIRDatabase.database().reference().child("Playing Online")
+        privateGameRef = FIRDatabase.database().reference().child("Private Games")
+        
         letter1.delegate = self
         letter2.delegate = self
         letter3.delegate = self
@@ -85,7 +92,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.yourWord.isHidden = true
         
          self.howToPlayButton.alpha = 0
-         self.multiplayerButton.alpha = 0
+         self.playOnlineButton.alpha = 0
          self.playVsCPUButton.alpha = 0
          
          UIView.animate(withDuration: 0.5, delay: 0.2, animations: {
@@ -93,7 +100,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
          })
          
          UIView.animate(withDuration: 0.5, delay: 0.6, animations: {
-            self.multiplayerButton.alpha = 1
+            self.playOnlineButton.alpha = 1
          })
          
          UIView.animate(withDuration: 0.5, delay: 1, animations: {
@@ -103,8 +110,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         
     }
-    
-    @IBAction func multiplayerButtonPressed(_ sender: AnyObject) {
+    @IBAction func playOnlineButton(_ sender: AnyObject) {
         
         if (letter1.text?.isEmpty)!{
             self.yourWord.isHidden = false
@@ -127,14 +133,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.yourWord.text = "You missed a letter!"
         }
         else{
-            keys = ref.childByAutoId().key
-            let user = userObject(key: keys, name: nameTextField.text!, word: yourWord.text!, selected: false)
+            keys = playingOnlineRef.childByAutoId().key
+            myWord = "\(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
+            let user = userObject(key: keys, name: nameTextField.text!, word: yourWord.text!, selected: false, wordToGuess: "")
             let childUpdates = ["\(keys)" : user.getSnapshotValue()]
-            ref.updateChildValues(childUpdates)
+            playingOnlineRef.updateChildValues(childUpdates)
             performSegue(withIdentifier: "firstSegue", sender: Any?.self)
         }
+
         
     }
+    
     
     func checkMaxLength(textField: UITextField!, maxLength: Int) {
         
