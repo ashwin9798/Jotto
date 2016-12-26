@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5396D25DE646110645E63942 /* Pods_Jotto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84803BB1FA4E9FA52C20F3C8 /* Pods_Jotto.framework */; };
 		7727A32D1E109A4C0012C5CF /* OnlineGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7727A32C1E109A4C0012C5CF /* OnlineGameViewController.swift */; };
+		7727A32F1E115CAA0012C5CF /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7727A32E1E115CAA0012C5CF /* AlertViewController.swift */; };
 		77587AB01E0E19BA00BDDB49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77587AAF1E0E19BA00BDDB49 /* AppDelegate.swift */; };
 		77587AB21E0E19BA00BDDB49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77587AB11E0E19BA00BDDB49 /* ViewController.swift */; };
 		77587AB51E0E19BA00BDDB49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77587AB31E0E19BA00BDDB49 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		7727A32C1E109A4C0012C5CF /* OnlineGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineGameViewController.swift; sourceTree = "<group>"; };
+		7727A32E1E115CAA0012C5CF /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		77587AAC1E0E19BA00BDDB49 /* Jotto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jotto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77587AAF1E0E19BA00BDDB49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77587AB11E0E19BA00BDDB49 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				77587AAF1E0E19BA00BDDB49 /* AppDelegate.swift */,
 				77587AB11E0E19BA00BDDB49 /* ViewController.swift */,
 				775A3E171E0EC2AF003ED67C /* PrivateGameUsers.swift */,
+				7727A32E1E115CAA0012C5CF /* AlertViewController.swift */,
 				7727A32C1E109A4C0012C5CF /* OnlineGameViewController.swift */,
 				775A3E151E0E7CAC003ED67C /* user.swift */,
 				77587AB31E0E19BA00BDDB49 /* Main.storyboard */,
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7727A32D1E109A4C0012C5CF /* OnlineGameViewController.swift in Sources */,
+				7727A32F1E115CAA0012C5CF /* AlertViewController.swift in Sources */,
 				775A3E181E0EC2AF003ED67C /* PrivateGameUsers.swift in Sources */,
 				775A3E161E0E7CAC003ED67C /* user.swift in Sources */,
 				77587AB21E0E19BA00BDDB49 /* ViewController.swift in Sources */,

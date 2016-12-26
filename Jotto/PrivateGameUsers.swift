@@ -92,33 +92,6 @@ class PrivateGameUsers: UIViewController {
             }
             
         })
-        
-        myRef.observe(FIRDataEventType.value, with: { (snapshot) in
-            if !snapshot.exists()
-            {
-                print("Data snapshot doesn't exist...")
-                return
-            }
-                
-            else
-            {
-                let decision = snapshot.value as! Bool
-                if (decision)
-                {
-                    print("Match Complete")
-                    
-                    self.performSegue(withIdentifier: "toMatch", sender: Any?.self)
-                    self.ref.child(keys).removeValue()
-                    
-                }
-                else
-                {
-                    print("No Matches... Yet")
-                }
-                
-            }
-            
-        })
 
         
     }
@@ -158,12 +131,25 @@ class PrivateGameUsers: UIViewController {
                 ref.child(key).child("selected").setValue(true)
                 ref.child(key).child("wordToGuess").setValue(myWord)
                 
-                ref.child(keys).removeValue()
-                
-                performSegue(withIdentifier: "toGame", sender: Any?.self)
+//                ref.child(keys).removeValue()
+//                
+//                performSegue(withIdentifier: "toGame", sender: Any?.self)
             }
         }
         whichButtonDeleted = buttonTag.tag
+    }
+
+    func AlertButtonTapped(_ sender: UIButton, match: String) {
+        
+        // create the alert
+        let alert = UIAlertController(title: "UIAlertController", message: "\(match) challenged you. Accept the request?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add the actions (buttons)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

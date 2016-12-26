@@ -21,7 +21,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var howToPlayButton: UIButton!
     
     @IBOutlet weak var playOnlineButton: UIButton!
-    @IBOutlet weak var playVsCPUButton: UIButton!
+    
+    @IBOutlet weak var createPrivateGameButton: UIButton!
+    
+    @IBOutlet weak var joinPrivateGameButton: UIButton!
     
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -93,7 +96,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
          self.howToPlayButton.alpha = 0
          self.playOnlineButton.alpha = 0
-         self.playVsCPUButton.alpha = 0
+         self.createPrivateGameButton.alpha = 0
+        self.joinPrivateGameButton.alpha = 0
          
          UIView.animate(withDuration: 0.5, delay: 0.2, animations: {
             self.howToPlayButton.alpha = 1
@@ -104,8 +108,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
          })
          
          UIView.animate(withDuration: 0.5, delay: 1, animations: {
-            self.playVsCPUButton.alpha = 1
+            self.createPrivateGameButton.alpha = 1
          })
+        
+        UIView.animate(withDuration: 0.5, delay: 1.4, animations: {
+            self.joinPrivateGameButton.alpha = 1
+        })
+        
+        
         
         
         
@@ -138,12 +148,45 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let user = userObject(key: keys, name: nameTextField.text!, word: yourWord.text!, selected: false, wordToGuess: "")
             let childUpdates = ["\(keys)" : user.getSnapshotValue()]
             playingOnlineRef.updateChildValues(childUpdates)
-            performSegue(withIdentifier: "firstSegue", sender: Any?.self)
+            performSegue(withIdentifier: "toRandomGame", sender: Any?.self)
         }
 
         
     }
     
+    @IBAction func joinPrivateGameButtonPressed(_ sender: AnyObject) {
+        
+        if (letter1.text?.isEmpty)!{
+            self.yourWord.isHidden = false
+            self.yourWord.text = "You missed a letter!"
+        }
+        else if (letter2.text?.isEmpty)!{
+            self.yourWord.isHidden = false
+            self.yourWord.text = "You missed a letter!"
+        }
+        else if (letter3.text?.isEmpty)!{
+            self.yourWord.isHidden = false
+            self.yourWord.text = "You missed a letter!"
+        }
+        else if (letter4.text?.isEmpty)!{
+            self.yourWord.isHidden = false
+            self.yourWord.text = "You missed a letter!"
+        }
+        else if (letter5.text?.isEmpty)!{
+            self.yourWord.isHidden = false
+            self.yourWord.text = "You missed a letter!"
+        }
+        else{
+            keys = privateGameRef.childByAutoId().key
+            myWord = "\(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
+            let user = userObject(key: keys, name: nameTextField.text!, word: myWord, selected: false, wordToGuess: "")
+            let childUpdates = ["\(keys)" : user.getSnapshotValue()]
+            privateGameRef.updateChildValues(childUpdates)
+            performSegue(withIdentifier: "toUserLobby", sender: Any?.self)
+        }
+        
+    }
+
     
     func checkMaxLength(textField: UITextField!, maxLength: Int) {
         
