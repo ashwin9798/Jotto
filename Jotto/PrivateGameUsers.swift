@@ -23,8 +23,8 @@ class PrivateGameUsers: UIViewController {
     var buttonIsEmpty: Bool = false
     
     
-    var ref: FIRDatabaseReference = FIRDatabase.database().reference()
-    var myRef: FIRDatabaseReference = FIRDatabase.database().reference().child(keys).child("selected")
+    var ref: FIRDatabaseReference = FIRDatabase.database().reference().child("Private Games")
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,33 +37,36 @@ class PrivateGameUsers: UIViewController {
             let user = userObject(snapshot: snapshot)
             let username = user.name as String?
             
-            if username != nil {
+            if username != nil{
                 
-                for index in 0...self.ArrayOfKeys.count-1{
-                    if (self.ArrayOfKeys[index] == "0"){
-                        self.whichButtonEmpty = index;
-                        self.buttonIsEmpty = true
-                        self.ArrayOfKeys[index] = user.key
-                        self.ArrayOfUsernames[index] = username!
-                        break
-                    }
-                }
-                
-                if(!self.buttonIsEmpty){
-                    self.ArrayOfUsernames.append(username!)
-                    self.ArrayOfKeys.append(user.key)
-                }
-
-                if (self.whichButtonEmpty != 0){
-                
-                    self.createButton(yPos: 40 + 115*(self.whichButtonEmpty), username: username!)
-                    self.height = (40 + 115*(self.count)) + 50
+                if(user.key != keys){
                     
-                }
-                else{
-                    self.count += 1
-                    self.createButton(yPos: 40 + 115*(self.count), username: username!)
-                    self.height = (40 + 115*(self.count)) + 50
+                    for index in 0...self.ArrayOfKeys.count-1{
+                        if (self.ArrayOfKeys[index] == "0"){
+                            self.whichButtonEmpty = index;
+                            self.buttonIsEmpty = true
+                            self.ArrayOfKeys[index] = user.key
+                            self.ArrayOfUsernames[index] = username!
+                            break
+                        }
+                    }
+                    
+                    if(!self.buttonIsEmpty){
+                        self.ArrayOfUsernames.append(username!)
+                        self.ArrayOfKeys.append(user.key)
+                    }
+                    
+                    if (self.whichButtonEmpty != 0){
+                        
+                        self.createButton(yPos: 40 + 115*(self.whichButtonEmpty), username: username!)
+                        self.height = (40 + 115*(self.count)) + 50
+                        
+                    }
+                    else{
+                        self.count += 1
+                        self.createButton(yPos: 40 + 115*(self.count), username: username!)
+                        self.height = (40 + 115*(self.count)) + 50
+                    }
                 }
                 
             }
@@ -117,6 +120,7 @@ class PrivateGameUsers: UIViewController {
             button.tag = self.count
             ArrayOfButtons.append(button)
         }
+        self.view.addSubview(button)
     }
     
     func buttonAction(sender: UIButton){
@@ -137,19 +141,6 @@ class PrivateGameUsers: UIViewController {
             }
         }
         whichButtonDeleted = buttonTag.tag
-    }
-
-    func AlertButtonTapped(_ sender: UIButton, match: String) {
-        
-        // create the alert
-        let alert = UIAlertController(title: "UIAlertController", message: "\(match) challenged you. Accept the request?", preferredStyle: UIAlertControllerStyle.alert)
-        
-        // add the actions (buttons)
-        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: nil))
-        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil))
-        
-        // show the alert
-        self.present(alert, animated: true, completion: nil)
     }
 
 }

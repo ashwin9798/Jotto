@@ -10,34 +10,13 @@ import UIKit
 import FirebaseDatabase
 
 class OnlineGameViewController: UIViewController {
-    @IBOutlet weak var loadingLabel: UILabel!
-    @IBOutlet weak var loadingPlayers: UIActivityIndicatorView!
+    
 
     var playingOnlineRef: FIRDatabaseReference = FIRDatabase.database().reference().child("Playing Online")
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
-        self.loadingPlayers.startAnimating()
-        self.loadingLabel.isHidden = false
-        
-        playingOnlineRef.observe(.childAdded, with: {(snapshot) in
-            
-            let key = snapshot.key
-            let user = userObject(snapshot: snapshot)
-            
-            if (!user.hasBeenChosen()){
-                self.loadingPlayers.stopAnimating()
-                self.loadingLabel.isHidden = true
-                let wordToGuess = user.word
-                self.playingOnlineRef.child(keys).child("wordToGuess").setValue(wordToGuess)
-                self.playingOnlineRef.child(key).child("wordToGuess").setValue(myWord)
-                self.performSegue(withIdentifier: "toRandomGame", sender: Any?.self)
-            }
-            
-        })
         
     }
 

@@ -13,8 +13,10 @@ class AlertViewController: UIViewController {
 
     @IBOutlet weak var waitingForRequest: UIActivityIndicatorView!
     
-    var selectedRef: FIRDatabaseReference = FIRDatabase.database().reference().child(keys).child("selected")
-    var wordToGuessRef: FIRDatabaseReference = FIRDatabase.database().reference().child(keys).child("wordToGuess")
+    @IBOutlet weak var waitingLabel: UILabel!
+    
+    var selectedRef: FIRDatabaseReference = FIRDatabase.database().reference().child("Private Games").child(keys).child("selected")
+    var nameRef: FIRDatabaseReference = FIRDatabase.database().reference().child("Private Games").child(keys).child("name")
     
     var requestAccepted: Bool = false
     
@@ -22,6 +24,7 @@ class AlertViewController: UIViewController {
         super.viewDidLoad()
         
         waitingForRequest.startAnimating()
+        waitingLabel.isHidden = false
         
         selectedRef.observe(FIRDataEventType.value, with: { (snapshot) in
             if !snapshot.exists()
@@ -40,8 +43,8 @@ class AlertViewController: UIViewController {
                     
                     if(self.requestAccepted){
                         print("Match Complete")
-                        self.performSegue(withIdentifier: "toMatch", sender: Any?.self)
                         self.selectedRef.child(keys).removeValue()
+                        self.performSegue(withIdentifier: "requestToMatch", sender: Any?.self)
                     }
                     else{
                         print("No matches... Yet")
@@ -89,10 +92,10 @@ class AlertViewController: UIViewController {
     
     func observeWordToGuessRef(){
         
-        self.wordToGuessRef.observe(FIRDataEventType.value, with:  { (snapshot) in
+        self.nameRef.observe(FIRDataEventType.value, with:  { (snapshot) in
             
-            let wordToGuess = snapshot.value as! String
-            self.createAlertButton(match: wordToGuess)
+            let name = snapshot.value as! String
+            self.createAlertButton(match: name)
             
         })
     }

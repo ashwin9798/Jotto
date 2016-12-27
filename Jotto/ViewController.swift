@@ -35,6 +35,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         LetterString[0] = letter1.text!
         yourWord.isHidden = false
         yourWord.text = "your word: \(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
+        letter2.becomeFirstResponder()
     }
     
     @IBOutlet weak var letter2: UITextField!
@@ -44,6 +45,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         LetterString[1] = letter2.text!
         yourWord.isHidden = false
         yourWord.text = "your word: \(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
+        letter3.becomeFirstResponder()
     }
     
     @IBOutlet weak var letter3: UITextField!
@@ -53,6 +55,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         LetterString[2] = letter3.text!
         yourWord.isHidden = false
         yourWord.text = "your word: \(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
+        letter4.becomeFirstResponder()
     }
     
     @IBOutlet weak var letter4: UITextField!
@@ -62,6 +65,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         LetterString[3] = letter4.text!
         yourWord.isHidden = false
         yourWord.text = "your word: \(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
+        letter5.becomeFirstResponder()
         
     }
     
@@ -115,11 +119,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.joinPrivateGameButton.alpha = 1
         })
         
-        
-        
-        
-        
     }
+    
     @IBAction func playOnlineButton(_ sender: AnyObject) {
         
         if (letter1.text?.isEmpty)!{
@@ -148,7 +149,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let user = userObject(key: keys, name: nameTextField.text!, word: yourWord.text!, selected: false, wordToGuess: "")
             let childUpdates = ["\(keys)" : user.getSnapshotValue()]
             playingOnlineRef.updateChildValues(childUpdates)
-            performSegue(withIdentifier: "toRandomGame", sender: Any?.self)
+            performSegue(withIdentifier: "toWaitingScreen", sender: Any?.self)
         }
 
         
@@ -187,6 +188,50 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
 
+    @IBAction func createPrivateGameButtonPressed(_ sender: Any) {
+        
+        if (letter1.text?.isEmpty)!{
+            self.yourWord.isHidden = false
+            self.yourWord.text = "You missed a letter!"
+        }
+        else if (letter2.text?.isEmpty)!{
+            self.yourWord.isHidden = false
+            self.yourWord.text = "You missed a letter!"
+        }
+        else if (letter3.text?.isEmpty)!{
+            self.yourWord.isHidden = false
+            self.yourWord.text = "You missed a letter!"
+        }
+        else if (letter4.text?.isEmpty)!{
+            self.yourWord.isHidden = false
+            self.yourWord.text = "You missed a letter!"
+        }
+        else if (letter5.text?.isEmpty)!{
+            self.yourWord.isHidden = false
+            self.yourWord.text = "You missed a letter!"
+        }
+        else{
+            keys = privateGameRef.childByAutoId().key
+            myWord = "\(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
+            let user = userObject(key: keys, name: nameTextField.text!, word: myWord, selected: false, wordToGuess: "")
+            let childUpdates = ["\(keys)" : user.getSnapshotValue()]
+            privateGameRef.updateChildValues(childUpdates)
+            performSegue(withIdentifier: "toAlertScreen", sender: Any?.self)
+        }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toUserLobby" {
+            
+            let SelfData = segue.destination as! PrivateGameUsers
+            SelfData.ArrayOfKeys.append(keys)
+            SelfData.ArrayOfUsernames.append(nameTextField.text!)
+            
+        }
+        
+    }
     
     func checkMaxLength(textField: UITextField!, maxLength: Int) {
         
