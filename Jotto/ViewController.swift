@@ -11,6 +11,7 @@ import FirebaseDatabase
 
 var keys = ""
 var myWord = ""
+var wordToGuess = ""
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -32,7 +33,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var letter1: UITextField!
     @IBAction func letter1button(_ sender: AnyObject) {
         checkMaxLength(textField: sender as! UITextField, maxLength: 1)
-        LetterString[0] = letter1.text!
+        LetterString[0] = letter1.text!.uppercased()
         yourWord.isHidden = false
         yourWord.text = "your word: \(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
         letter2.becomeFirstResponder()
@@ -42,7 +43,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func letter2button(_ sender: AnyObject) {
         
         checkMaxLength(textField: sender as! UITextField, maxLength: 1)
-        LetterString[1] = letter2.text!
+        LetterString[1] = letter2.text!.uppercased()
         yourWord.isHidden = false
         yourWord.text = "your word: \(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
         letter3.becomeFirstResponder()
@@ -52,7 +53,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func letter3button(_ sender: AnyObject) {
         
         checkMaxLength(textField: sender as! UITextField, maxLength: 1)
-        LetterString[2] = letter3.text!
+        LetterString[2] = letter3.text!.uppercased()
         yourWord.isHidden = false
         yourWord.text = "your word: \(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
         letter4.becomeFirstResponder()
@@ -62,7 +63,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func letter4button(_ sender: AnyObject) {
         
         checkMaxLength(textField: sender as! UITextField, maxLength: 1)
-        LetterString[3] = letter4.text!
+        LetterString[3] = letter4.text!.uppercased()
         yourWord.isHidden = false
         yourWord.text = "your word: \(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
         letter5.becomeFirstResponder()
@@ -72,7 +73,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var letter5: UITextField!
     @IBAction func letter5button(_ sender: AnyObject) {
         checkMaxLength(textField: sender as! UITextField, maxLength: 1)
-        LetterString[4] = letter5.text!
+        LetterString[4] = letter5.text!.uppercased()
         yourWord.isHidden = false
         yourWord.text = "your word: \(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
     }
@@ -146,7 +147,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         else{
             keys = playingOnlineRef.childByAutoId().key
             myWord = "\(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
-            let user = userObject(key: keys, name: nameTextField.text!, word: yourWord.text!, selected: false, wordToGuess: "")
+            let user = userObject(key: keys, name: nameTextField.text!, word: myWord, someoneSetMyValue: false, wordToGuess: "")
             let childUpdates = ["\(keys)" : user.getSnapshotValue()]
             playingOnlineRef.updateChildValues(childUpdates)
             performSegue(withIdentifier: "toWaitingScreen", sender: Any?.self)
@@ -180,7 +181,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         else{
             keys = privateGameRef.childByAutoId().key
             myWord = "\(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
-            let user = userObject(key: keys, name: nameTextField.text!, word: myWord, selected: false, wordToGuess: "")
+            let user = userObject(key: keys, name: nameTextField.text!, word: myWord, someoneSetMyValue: false, wordToGuess: "")
             let childUpdates = ["\(keys)" : user.getSnapshotValue()]
             privateGameRef.updateChildValues(childUpdates)
             performSegue(withIdentifier: "toUserLobby", sender: Any?.self)
@@ -213,7 +214,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         else{
             keys = privateGameRef.childByAutoId().key
             myWord = "\(LetterString[0])\(LetterString[1])\(LetterString[2])\(LetterString[3])\(LetterString[4])"
-            let user = userObject(key: keys, name: nameTextField.text!, word: myWord, selected: false, wordToGuess: "")
+            let user = userObject(key: keys, name: nameTextField.text!, word: myWord, someoneSetMyValue: false, wordToGuess: "")
             let childUpdates = ["\(keys)" : user.getSnapshotValue()]
             privateGameRef.updateChildValues(childUpdates)
             performSegue(withIdentifier: "toAlertScreen", sender: Any?.self)
